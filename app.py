@@ -18,9 +18,9 @@ app.secret_key = 'kalsecretkey'
 api = Api(app)	#flask is going to be our app, and our app will have routes, but this time also the api; more easily to create resources/api
 
 #this is to auto-create db tables
-@app.before_first_request
-def create_table():
-	db.create_all()
+# @app.before_first_request
+# def create_table():
+# 	db.create_all()
 
 jwt = JWT(app, authenicate, identity)  # so this creates a new endpoint, ex. /auth, if user is ok, we can send token
 
