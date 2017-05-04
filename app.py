@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request
 from flask_restful import Resource, Api
 from flask_jwt import JWT
@@ -12,7 +14,7 @@ from resources.store import Store, StoreList
 # A resource is the thing our api is about / retrun etc; students, coins, pianos
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'  #just means the db is in the rood code directory
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')  #just means the db is in the rood code directory
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'kalsecretkey'
 api = Api(app)	#flask is going to be our app, and our app will have routes, but this time also the api; more easily to create resources/api
